@@ -12,7 +12,6 @@ public class TestPlaform {
 	private Course histoire;
 	private Course geo;
 
-
 	/**
 	 * Sets up the test fixture.
 	 *
@@ -115,10 +114,10 @@ public class TestPlaform {
 	public void testAcceptNull() {
 		try {
 			platform.registerStudent(null);
+			fail(); // Si on passe ici, le test échoue
 		} catch (NullPointerException e) {
-			return; // Si on passe ici, le test réussit
+			// Si on passe ici, le test réussit
 		}
-		fail(); // Si on passe ici, le test échoue
 	}
 
 	/**
