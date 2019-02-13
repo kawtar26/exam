@@ -32,23 +32,23 @@ public class TestPlaform {
 	 * Vérifie qu'on ne peut pas dupliquer les inscriptions à un cours
 	 */
 	@Test
-	public void testNoDuplicateRegistration() throws Exception {
+	public void testNoDuplicateRegistration() throws PlatformException {
 		platform.enroll(bastide, geo);
 		platform.enroll(bastide, geo);
-		assertEquals(platform.studentsForCourse(geo).size(), 1);
-		assertTrue(platform.studentsForCourse(geo).contains(bastide));
+		assertEquals("On doit trouver un seul étudiant", 1, platform.studentsForCourse(geo).size());
+		assertTrue("L'étudiant n'est pas correctement enegistré", platform.studentsForCourse(geo).contains(bastide));
 		platform.withdraw(bastide, geo);
-		assertFalse(platform.studentsForCourse(geo).contains(bastide));
+		assertFalse("L'étudiant n'est pas correctement désinscrit", platform.studentsForCourse(geo).contains(bastide));
 	}
 
 	/**
 	 * Vérifier que l'attribution des notes marche bien
 	 */
 	@Test
-	public void testGiveMark() throws Exception {
+	public void testGiveMark() throws PlatformException {
 		platform.enroll(bastide, geo);
 		platform.setMark(bastide, geo, 15);
-		assertEquals(platform.getMark(bastide, geo), 15);
+		assertEquals( "La note n'est pas correctement enegistrée", 15, platform.getMark(bastide, geo));
 	}
 
 	/**
@@ -56,12 +56,12 @@ public class TestPlaform {
 	 * ce cours
 	 */
 	@Test
-	public void testNoMark() throws Exception {
+	public void testNoMark() throws PlatformException {
 		platform.enroll(bastide, geo);
 		try {
 			int note = platform.getMark(bastide, geo);
 			// Si on arrive ici le test échoue
-			fail();
+			fail("La note n'est pas enregistrée, on doit avoir une exception");
 		} catch (PlatformException e) {
 			// On s'attend a arriver ici
 		}
@@ -72,12 +72,12 @@ public class TestPlaform {
 	 * note
 	 */
 	@Test
-	public void testCannotUnregister() throws Exception {
+	public void testCannotUnregister() throws PlatformException {
 		platform.enroll(bastide, geo);
 		platform.setMark(bastide, geo, 15);
 		try {
 			platform.withdraw(bastide, geo);
-			fail();
+			fail("On ne doit pas désisncrire un étudiant qui a déjà une note");
 		} catch (PlatformException e) {
 		}
 	}
@@ -86,12 +86,12 @@ public class TestPlaform {
 	 * Vérifier qu'on ne peut pas changer une note
 	 */
 	@Test
-	public void testCannotChangeMark() throws Exception {
+	public void testCannotChangeMark() throws PlatformException {
 		platform.enroll(bastide, geo);
 		platform.setMark(bastide, geo, 15);
 		try {
 			platform.setMark(bastide, geo, 16);
-			fail();
+			fail("On ne peut pas changer une note");
 		} catch (PlatformException e) {
 		}
 	}
@@ -114,7 +114,7 @@ public class TestPlaform {
 	public void testAcceptNull() {
 		try {
 			platform.registerStudent(null);
-			fail(); // Si on passe ici, le test échoue
+			fail("Il faut un étudiant"); // Si on passe ici, le test échoue
 		} catch (NullPointerException e) {
 			// Si on passe ici, le test réussit
 		}
@@ -128,7 +128,7 @@ public class TestPlaform {
 		Course unknown = new Course("Bidon", 20);
 		try {
 			platform.enroll(bastide, unknown);
-			fail();
+			fail("Il faut un cours dispensé par l'université");
 		} catch (PlatformException e) {
 		}
 	}
@@ -141,7 +141,7 @@ public class TestPlaform {
 		Person unknown = new Person("Bidon");
 		try {
 			platform.enroll(unknown, geo);
-			fail();
+			fail("Il faut un étudiant inscrit à l'université");
 		} catch (PlatformException e) {
 		}
 	}
