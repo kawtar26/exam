@@ -1,9 +1,9 @@
 package mooc;
 
-import static org.junit.Assert.*;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 public class TestPlaform {
 
@@ -17,7 +17,7 @@ public class TestPlaform {
 	 *
 	 * Called before every test case method.
 	 */
-	@Before
+	@BeforeEach
 	public void setUp() {
 		platform = new Platform();
 		bastide = new Person("Rémi Bastide");
@@ -35,10 +35,13 @@ public class TestPlaform {
 	public void testNoDuplicateRegistration() throws PlatformException {
 		platform.enroll(bastide, geo);
 		platform.enroll(bastide, geo);
-		assertEquals("On doit trouver un seul étudiant", 1, platform.studentsForCourse(geo).size());
-		assertTrue("L'étudiant n'est pas correctement enegistré", platform.studentsForCourse(geo).contains(bastide));
+		assertEquals(1, platform.studentsForCourse(geo).size(),
+			"On doit trouver un seul étudiant");
+		assertTrue(platform.studentsForCourse(geo).contains(bastide),
+			"L'étudiant n'est pas correctement enegistré");
 		platform.withdraw(bastide, geo);
-		assertFalse("L'étudiant n'est pas correctement désinscrit", platform.studentsForCourse(geo).contains(bastide));
+		assertFalse(platform.studentsForCourse(geo).contains(bastide),
+			"L'étudiant n'est pas correctement désinscrit");
 	}
 
 	/**
@@ -48,7 +51,8 @@ public class TestPlaform {
 	public void testGiveMark() throws PlatformException {
 		platform.enroll(bastide, geo);
 		platform.setMark(bastide, geo, 15);
-		assertEquals( "La note n'est pas correctement enegistrée", 15, platform.getMark(bastide, geo));
+		assertEquals(15, platform.getMark(bastide, geo),
+			"La note n'est pas correctement enegistrée");
 	}
 
 	/**
