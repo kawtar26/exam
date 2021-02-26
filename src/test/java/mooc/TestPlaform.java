@@ -32,7 +32,7 @@ public class TestPlaform {
 	 * Vérifie qu'on ne peut pas dupliquer les inscriptions à un cours
 	 */
 	@Test
-	public void testNoDuplicateRegistration() throws PlatformException {
+	public void testNoDuplicateRegistration() throws Exception {
 		platform.enroll(bastide, geo);
 		platform.enroll(bastide, geo);
 		assertEquals(1, platform.studentsForCourse(geo).size(),
@@ -48,7 +48,7 @@ public class TestPlaform {
 	 * Vérifier que l'attribution des notes marche bien
 	 */
 	@Test
-	public void testGiveMark() throws PlatformException {
+	public void testGiveMark() throws Exception {
 		platform.enroll(bastide, geo);
 		platform.setMark(bastide, geo, 15);
 		assertEquals(15, platform.getMark(bastide, geo),
@@ -60,13 +60,13 @@ public class TestPlaform {
 	 * ce cours
 	 */
 	@Test
-	public void testNoMark() throws PlatformException {
+	public void testNoMark() throws Exception {
 		platform.enroll(bastide, geo);
 		try {
 			int note = platform.getMark(bastide, geo);
 			// Si on arrive ici le test échoue
 			fail("La note n'est pas enregistrée, on doit avoir une exception");
-		} catch (PlatformException e) {
+		} catch (Exception e) {
 			// On s'attend a arriver ici
 		}
 	}
@@ -76,13 +76,13 @@ public class TestPlaform {
 	 * note
 	 */
 	@Test
-	public void testCannotUnregister() throws PlatformException {
+	public void testCannotUnregister() throws Exception {
 		platform.enroll(bastide, geo);
 		platform.setMark(bastide, geo, 15);
 		try {
 			platform.withdraw(bastide, geo);
 			fail("On ne doit pas désisncrire un étudiant qui a déjà une note");
-		} catch (PlatformException e) {
+		} catch (Exception e) {
 		}
 	}
 
@@ -90,13 +90,13 @@ public class TestPlaform {
 	 * Vérifier qu'on ne peut pas changer une note
 	 */
 	@Test
-	public void testCannotChangeMark() throws PlatformException {
+	public void testCannotChangeMark() throws Exception {
 		platform.enroll(bastide, geo);
 		platform.setMark(bastide, geo, 15);
 		try {
 			platform.setMark(bastide, geo, 16);
 			fail("On ne peut pas changer une note");
-		} catch (PlatformException e) {
+		} catch (Exception e) {
 		}
 	}
 
@@ -133,7 +133,7 @@ public class TestPlaform {
 		try {
 			platform.enroll(bastide, unknown);
 			fail("Il faut un cours dispensé par l'université");
-		} catch (PlatformException e) {
+		} catch (Exception e) {
 		}
 	}
 
@@ -146,7 +146,7 @@ public class TestPlaform {
 		try {
 			platform.enroll(unknown, geo);
 			fail("Il faut un étudiant inscrit à l'université");
-		} catch (PlatformException e) {
+		} catch (Exception e) {
 		}
 	}
 

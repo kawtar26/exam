@@ -41,10 +41,10 @@ public class Platform {
 	 * Inscrire un étudiant à un cours
 	 * @param  s l'étudiant
 	 * @param  c le cours
-	 * @throws PlatformException si l'étudiant n'est pas inscrit à l'université, 
+	 * @throws Exception si l'étudiant n'est pas inscrit à l'université, 
 	 * ou si le cours n'est pas dispensé par l'université
 	 */
-	public void enroll(Person s, Course c) throws PlatformException {
+	public void enroll(Person s, Course c) throws Exception {
 		throw new UnsupportedOperationException("Pas encore implémenté");
 	}
 
@@ -52,9 +52,9 @@ public class Platform {
 	 * Désinscrire un étudiant à un cours
 	 * @param  s l'étudiant
 	 * @param  c le cours
-	 * @throws PlatformException si l'étudiant a déjà une note àce cours
+	 * @throws Exception si l'étudiant a déjà une note àce cours
 	 */
-	public void withdraw(Person s, Course c) throws PlatformException {
+	public void withdraw(Person s, Course c) throws Exception {
 		throw new UnsupportedOperationException("Pas encore implémenté");
 	}
 
@@ -63,11 +63,11 @@ public class Platform {
 	 * @param  s l'étudiant
 	 * @param  c le cours
 	 * @param  mark la note
-	 * @throws PlatformException si l'étudiant n'est pas inscrit à l'université, 
+	 * @throws Exception si l'étudiant n'est pas inscrit à l'université, 
 	 * ou si le cours n'est pas dispensé par l'université,
 	 * ou si l'étudiant a déjà une note pour ce cours
 	 */
-	public void setMark(Person s, Course c, int mark) throws PlatformException {
+	public void setMark(Person s, Course c, int mark) throws Exception {
 		throw new UnsupportedOperationException("Pas encore implémenté");
 	}
 
@@ -76,29 +76,29 @@ public class Platform {
 	 * @param  s l'étudiant
 	 * @param  c le cours
 	 * @return la note de l'étudiant pour le cours
-	 * @throws PlatformException si l'étudiant n'est pas inscrit à l'université, 
+	 * @throws Exception si l'étudiant n'est pas inscrit à l'université, 
 	 * ou si le cours n'est pas dispensé par l'université
 	 * ou si l'étudiant n'a pas encore de note à ce cours
 	 */
-	public int getMark(Person s, Course c) throws PlatformException {
+	public int getMark(Person s, Course c) throws Exception {
 		throw new UnsupportedOperationException("Pas encore implémenté");
 	}
 
 	/**
 	 * @param c le cours considéré
 	 * @return les étudiants inscrits à ce cours
-	 * @throws PlatformException si le cours n'est pas dispensé par l'université
+	 * @throws Exception si le cours n'est pas dispensé par l'université
 	 */
-	public Set<Person> studentsForCourse(Course c) throws PlatformException {
+	public Set<Person> studentsForCourse(Course c) throws Exception {
 		throw new UnsupportedOperationException("Pas encore implémenté");
 	}
 
 	/**
 	 * @param s l'étudiant considéré
 	 * @return les cours auxquels un étudiant est incrit
-	 * @throws PlatformException si l'étudiant n'est pas inscrit à l'université, 
+	 * @throws Exception si l'étudiant n'est pas inscrit à l'université, 
 	 */
-	public Set<Course> coursesForStudent(Person s) throws PlatformException {
+	public Set<Course> coursesForStudent(Person s) throws Exception {
 		throw new UnsupportedOperationException("Pas encore implémenté");
 	}
 
