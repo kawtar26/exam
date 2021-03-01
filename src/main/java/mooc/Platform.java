@@ -11,9 +11,14 @@ public class Platform {
 	 * Ajoute un cours à la liste de cours dispensés
 	 * @param c le cours à ajouter (non null)
 	 */
+        private List<Course> course = new ArrayList<course>();
+        
 	public void addCourse(Course c) {
-           
-		throw new UnsupportedOperationException("Pas encore implémenté");
+            if(c == null) {
+                return;
+            }
+            courses.add(c);
+		
 	}
 
 	/**
