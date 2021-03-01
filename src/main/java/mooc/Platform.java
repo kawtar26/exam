@@ -6,7 +6,8 @@ public class Platform {
 
 	public Platform() {
 	}
-
+        private List<Person> persons = newArrayList<persons>();
+        
 	/**
 	 * Ajoute un cours à la liste de cours dispensés
 	 * @param c le cours à ajouter (non null)
