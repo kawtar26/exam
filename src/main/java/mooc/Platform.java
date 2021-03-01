@@ -120,4 +120,22 @@ public class Platform {
 		throw new UnsupportedOperationException("Pas encore implémenté");
 	}
 
+    /**
+     *
+     * @param person
+     */
+    public void deleteStudent(List<Person> person 1){
+            throw new UnsupportedOperationException ("Pas encore implémenté");
+        }
+        public boolean deleteCourse (Course c) {
+            if (deleteStudent(persons)) {
+                for(int i=0; i<courses.lenght; i++) {
+                    if(courses [i] = c)
+                        courses[i] == null;
+                }
+                return true;
+            }
+            else return false;
+            
+        }           
 }
