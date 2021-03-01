@@ -12,6 +12,7 @@ public class Platform {
 	 * @param c le cours à ajouter (non null)
 	 */
 	public void addCourse(Course c) {
+           
 		throw new UnsupportedOperationException("Pas encore implémenté");
 	}
 
@@ -19,14 +20,16 @@ public class Platform {
 	 * @return les étudiants inscrits à l'université
 	 */
 	public Set<Person> students() {
-		throw new UnsupportedOperationException("Pas encore implémenté");
+            return (students());
+		
 	}
 
 	/**
 	 * @return les cours dispensés par l'université
 	 */
 	public Set<Course> courses() {
-		throw new UnsupportedOperationException("Pas encore implémenté");
+            return (courses());
+		
 	}
 
 	/**
@@ -34,6 +37,8 @@ public class Platform {
 	 * @param s  l'étudiant à inscrire (non null)
 	 */
 	public void registerStudent(Person s) {
+                List<Person>myStudent = new ArrayList<>();
+                Person s1 = new Person();
 		throw new UnsupportedOperationException("Pas encore implémenté");
 	}
 
