@@ -124,18 +124,28 @@ public class Platform {
      *
      * @param person
      */
-    public void deleteStudent(List<Person> person 1){
-            throw new UnsupportedOperationException ("Pas encore implémenté");
-        }
-        public boolean deleteCourse (Course c) {
-            if (deleteStudent(persons)) {
-                for(int i=0; i<courses.lenght; i++) {
-                    if(courses [i] = c)
-                        courses[i] == null;
-                }
-                return true;
-            }
-            else return false;
+                
+    public void deleteStudent(Person person1) {
             
-        }           
+                for(int i=0; i<courses.lenght; i++) {
+                    if(persons[i].equals(person1)) {
+                        persons[i] == null;
+                
+                return true;
+                }
+            }
+            persons.remove(person1);
+            
+        }  
+    public void deleteCourse(Course C) {
+        if(c.deleteStudent (person1)) {
+            for(int i=0; i<courses.lenght; i++) {
+                if(courses[i] == c)
+                    courses[i] = null;
+               
+            }
+            return true;
+        }
+    }
+    else courses.remove(c);
 }
